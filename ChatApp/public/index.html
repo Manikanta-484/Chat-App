@@ -2,65 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="chat-container">
+    <h2>Chat Room</h2>
     <ul id="messages"></ul>
     <form id="chat-form">
-      <input id="msg" autocomplete="off" placeholder="Type a message..." />
-      <input type="file" id="file" accept="image/*" />
-      <button>Send</button>
-      <button type="button" id="emoji-btn">😊</button>
+        <button type="button" id="emoji-btn">😊</button>
+        <input id="msg" autocomplete="off" placeholder="Type a message.." />
+        <input type="file" id="file" accept="image/*" />
+        <button>Send</button>
     </form>
+    
   </div>
 
-  <script>
-    const form = document.getElementById('chat-form');
-    const input = document.getElementById('msg');
-    const fileInput = document.getElementById('file');
-    const messages = document.getElementById('messages');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const text = input.value.trim();
-      const file = fileInput.files[0];
-
-      if (!text && !file) return;
-
-      const li = document.createElement('li');
-
-      if (text) {
-        li.textContent = text;
-      }
-
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (event) {
-          const img = document.createElement('img');
-          img.src = event.target.result;
-          img.alt = 'Sent Image';
-          img.classList.add('chat-image');
-          li.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      }
-
-      messages.appendChild(li);
-      input.value = '';
-      fileInput.value = '';
-
-      messages.scrollTop = messages.scrollHeight;
-    });
-
-    // Dummy emoji button
-    document.getElementById('emoji-btn').addEventListener('click', () => {
-      input.value += '😊';
-      input.focus();
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
 </body>
-</html>
+</html> 
