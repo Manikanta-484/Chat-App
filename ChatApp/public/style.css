@@ -102,3 +102,41 @@ button:hover {
 #emoji-picker-container.visible {
     display: block;
 } 
+
+@media (max-width: 600px) {
+    .chat-container {
+        width: 95%;
+        height: 95vh;
+        padding: 15px;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    #msg, #file, button, #emoji-btn {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    #messages {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #messages li {
+        max-width: 100%;
+    }
+
+    .chat-image {
+        max-width: 100%;
+    }
+
+    #emoji-picker-container {
+        right: 10px;
+        bottom: 110px;
+    }
+}
+
